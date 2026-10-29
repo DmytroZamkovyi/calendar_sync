@@ -11,8 +11,8 @@ panels, cards or styles.
 
 > **Status: work in progress.** The sync core (`core/`) and the calendar entity
 > adapter (`adapter.py`, `ha_calendar.py`) are done and tested. The Home Assistant
-> integration layer (config flow, entities, services) is not written yet, so the
-> buttons above will only work once it is released.
+> integration layer: config flow with the pair/rules editor is written; the sync cycle, entities,
+> services and Repairs are not yet, so the buttons above will only work once it is released.
 
 ## Installation (once released)
 

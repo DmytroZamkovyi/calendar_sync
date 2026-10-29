@@ -1,0 +1,261 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Calendar Sync",
+        "description": "Synchronizes events between two calendars. After adding, use “Add sync pair” to choose the calendars and rules."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Calendar Sync is already set up."
+    }
+  },
+  "config_subentries": {
+    "pair": {
+      "entry_type": "Sync pair",
+      "initiate_flow": {
+        "user": "Add sync pair",
+        "reconfigure": "Edit sync pair"
+      },
+      "step": {
+        "user": {
+          "title": "New sync pair",
+          "description": "Pick two calendars and what is synced between them. Both directions on = two-way sync; one direction = mirror.",
+          "data": {
+            "calendar_1": "Calendar 1",
+            "calendar_2": "Calendar 2",
+            "direction_1to2": "Calendar 1 → Calendar 2",
+            "direction_2to1": "Calendar 2 → Calendar 1",
+            "closed_mode": "Changes in a calendar that is not written to",
+            "propagate_deletes": "Propagate deletions",
+            "conflict_policy": "Conflicts (both changed the same field)",
+            "days_back": "Days back",
+            "days_forward": "Days forward",
+            "dry_run": "Dry run (log only, change nothing)"
+          },
+          "data_description": {
+            "closed_mode": "In a one-way pair: revert manual changes made in the target calendar, or ignore them.",
+            "propagate_deletes": "Delete the event in the other calendar when it is deleted in one.",
+            "days_back": "How far into the past events are synced.",
+            "days_forward": "How far ahead events are synced."
+          }
+        },
+        "reconfigure": {
+          "title": "Edit sync pair",
+          "description": "Pick two calendars and what is synced between them. Both directions on = two-way sync; one direction = mirror.",
+          "data": {
+            "calendar_1": "Calendar 1",
+            "calendar_2": "Calendar 2",
+            "direction_1to2": "Calendar 1 → Calendar 2",
+            "direction_2to1": "Calendar 2 → Calendar 1",
+            "closed_mode": "Changes in a calendar that is not written to",
+            "propagate_deletes": "Propagate deletions",
+            "conflict_policy": "Conflicts (both changed the same field)",
+            "days_back": "Days back",
+            "days_forward": "Days forward",
+            "dry_run": "Dry run (log only, change nothing)"
+          },
+          "data_description": {
+            "closed_mode": "In a one-way pair: revert manual changes made in the target calendar, or ignore them.",
+            "propagate_deletes": "Delete the event in the other calendar when it is deleted in one.",
+            "days_back": "How far into the past events are synced.",
+            "days_forward": "How far ahead events are synced."
+          }
+        },
+        "rules": {
+          "title": "Rules",
+          "description": "Rules transform events before they are copied. Order matters: the first matching rule that skips wins, other matching rules are applied in order.",
+          "menu_options": {
+            "rules_1to2": "Rules: Calendar 1 → Calendar 2",
+            "rules_2to1": "Rules: Calendar 2 → Calendar 1",
+            "save": "Save"
+          }
+        },
+        "list": {
+          "title": "Rules: {source} → {target}",
+          "description": "Rules in this direction: {count}. Pick a rule to edit it, or add a new one.",
+          "data": {
+            "choice": "Rule"
+          }
+        },
+        "rule_menu": {
+          "title": "Rule",
+          "description": "{rule}",
+          "menu_options": {
+            "rule_edit": "Edit",
+            "rule_up": "Move up",
+            "rule_down": "Move down",
+            "rule_delete": "Delete",
+            "rule_back": "Back"
+          }
+        },
+        "cond_kind": {
+          "title": "Condition",
+          "description": "When should the rule apply to an event from {source}?",
+          "data": {
+            "kind": "Condition"
+          }
+        },
+        "cond_text": {
+          "title": "Text condition",
+          "data": {
+            "field": "Field",
+            "op": "Comparison",
+            "value": "Text"
+          },
+          "data_description": {
+            "value": "Case-insensitive. For “regular expression” use Python syntax."
+          }
+        },
+        "cond_all_day": {
+          "title": "All-day condition",
+          "data": {
+            "value": "Event is all-day"
+          }
+        },
+        "cond_duration": {
+          "title": "Duration condition",
+          "data": {
+            "op": "Duration is",
+            "value": "Minutes"
+          }
+        },
+        "cond_weekday": {
+          "title": "Weekday condition",
+          "data": {
+            "value": "Days"
+          }
+        },
+        "cond_hour": {
+          "title": "Start hour condition",
+          "description": "Applies when the event starts in the interval [from, to) in local time.",
+          "data": {
+            "from_hour": "From hour",
+            "to_hour": "To hour"
+          }
+        },
+        "action_kind": {
+          "title": "Action",
+          "description": "What to do with the matching event?",
+          "data": {
+            "kind": "Action"
+          }
+        },
+        "action_template": {
+          "title": "Text template",
+          "description": "Placeholders: {placeholders}.",
+          "data": {
+            "template": "Template"
+          }
+        },
+        "action_shift": {
+          "title": "Shift time",
+          "data": {
+            "minutes": "Minutes"
+          },
+          "data_description": {
+            "minutes": "Positive = later, negative = earlier."
+          }
+        }
+      },
+      "error": {
+        "same_calendar": "Choose two different calendars.",
+        "no_direction": "Enable at least one direction.",
+        "pair_exists": "This pair of calendars is already configured.",
+        "calendar_unavailable": "This calendar is unavailable right now.",
+        "read_only": "This calendar cannot be written to (it does not support creating events).",
+        "value_required": "Enter a value.",
+        "bad_regex": "Invalid regular expression.",
+        "positive_number": "Enter a number greater than 0.",
+        "select_days": "Select at least one day.",
+        "bad_hours": "Hours must be 0–24 and different.",
+        "bad_shift": "Enter a non-zero shift up to 1440 minutes."
+      },
+      "abort": {
+        "reconfigure_successful": "Sync pair updated."
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Calendar Sync",
+        "data": {
+          "interval": "Sync interval (minutes)"
+        },
+        "data_description": {
+          "interval": "How often all pairs are synchronized."
+        }
+      }
+    }
+  },
+  "selector": {
+    "closed_mode": {
+      "options": {
+        "revert": "Revert them",
+        "ignore": "Ignore them"
+      }
+    },
+    "conflict_policy": {
+      "options": {
+        "calendar1": "Calendar 1 wins",
+        "calendar2": "Calendar 2 wins",
+        "ask": "Ask me (Repairs)"
+      }
+    },
+    "condition_kind": {
+      "options": {
+        "always": "Always",
+        "text": "Text",
+        "all_day": "All-day",
+        "duration": "Duration",
+        "weekday": "Weekday",
+        "hour": "Start hour"
+      }
+    },
+    "action_kind": {
+      "options": {
+        "skip": "Don't sync",
+        "set_summary": "Set title",
+        "set_description": "Set description",
+        "set_location": "Set location",
+        "clear_description": "Clear description",
+        "clear_location": "Clear location",
+        "shift": "Shift time"
+      }
+    },
+    "text_field": {
+      "options": {
+        "summary": "Title",
+        "description": "Description",
+        "location": "Location"
+      }
+    },
+    "text_op": {
+      "options": {
+        "contains": "contains",
+        "equals": "equals",
+        "starts_with": "starts with",
+        "ends_with": "ends with",
+        "regex": "matches regular expression"
+      }
+    },
+    "number_op": {
+      "options": {
+        "gt": "longer than",
+        "lt": "shorter than"
+      }
+    },
+    "weekday": {
+      "options": {
+        "0": "Monday",
+        "1": "Tuesday",
+        "2": "Wednesday",
+        "3": "Thursday",
+        "4": "Friday",
+        "5": "Saturday",
+        "6": "Sunday"
+      }
+    }
+  }
+}

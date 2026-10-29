@@ -1,0 +1,14 @@
+{
+  "domain": "calendar_sync",
+  "name": "Calendar Sync",
+  "version": "0.1.0",
+  "config_flow": true,
+  "single_config_entry": true,
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "dependencies": ["calendar"],
+  "requirements": [],
+  "codeowners": [],
+  "issue_tracker": "https://github.com/DmytroZamkovyi/calendar_sync/issues",
+  "documentation": "https://github.com/DmytroZamkovyi/calendar_sync"
+}
