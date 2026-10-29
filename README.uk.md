@@ -10,7 +10,7 @@ Home Assistant (`calendar.*`) з простими правилами для ко
 [![Додати цю інтеграцію в Home Assistant.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=calendar_sync)
 
 > **Статус: у розробці.** Ядро синхронізації й тести готові
-> (`custom_components/calendar_sync/core/`). Шар інтеграції з Home Assistant
+> (`core/`). Шар інтеграції з Home Assistant
 > (налаштування, сутності, служби) ще не написаний, тому кнопки вище запрацюють лише
 > після релізу.
 

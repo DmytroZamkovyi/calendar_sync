@@ -1,3 +1,4 @@
 {
-  "name": "Calendar Sync"
+  "name": "Calendar Sync",
+  "content_in_root": true
 }
