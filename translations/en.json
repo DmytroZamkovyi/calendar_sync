@@ -256,6 +256,103 @@
         "5": "Saturday",
         "6": "Sunday"
       }
+    },
+    "winner": {
+      "options": {
+        "calendar1": "Calendar 1",
+        "calendar2": "Calendar 2"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "last_sync": {
+        "name": "Last sync"
+      },
+      "created": {
+        "name": "Created"
+      },
+      "updated": {
+        "name": "Updated"
+      },
+      "deleted": {
+        "name": "Deleted"
+      },
+      "conflicts": {
+        "name": "Conflicts"
+      },
+      "errors": {
+        "name": "Errors"
+      }
+    },
+    "binary_sensor": {
+      "out_of_sync": {
+        "name": "Out of sync"
+      }
+    },
+    "button": {
+      "sync_now": {
+        "name": "Sync now"
+      }
+    }
+  },
+  "issues": {
+    "conflicts": {
+      "title": "Calendar sync conflict",
+      "description": "{pair}: {count} event(s) were changed in both calendars in the same field: {items}.\n\nChange the event in one calendar to match the other, or call the `calendar_sync.resolve_conflict` action and choose which calendar wins."
+    },
+    "deletions_blocked": {
+      "title": "Calendar sync: deletions need confirmation",
+      "description": "{pair}: {count} deletion(s) were blocked because too many events disappeared at once. Everything else was synchronized.",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Confirm deletions",
+            "description": "Delete the {count} blocked event(s) of {pair} in the other calendar? Press Submit only if the events were really removed on purpose."
+          }
+        }
+      }
+    },
+    "sync_failing": {
+      "title": "Calendar sync keeps failing",
+      "description": "{pair} failed {count} cycles in a row: {items}"
+    }
+  },
+  "services": {
+    "sync_now": {
+      "name": "Sync now",
+      "description": "Runs a sync cycle of the selected pair right away.",
+      "fields": {
+        "confirm_deletions": {
+          "name": "Confirm deletions",
+          "description": "Also perform deletions that were blocked by the mass-deletion guard."
+        }
+      }
+    },
+    "preview": {
+      "name": "Preview",
+      "description": "Shows what a sync cycle would do, without changing anything."
+    },
+    "resolve_conflict": {
+      "name": "Resolve conflicts",
+      "description": "Runs a cycle in which the chosen calendar wins every conflict of the pair.",
+      "fields": {
+        "winner": {
+          "name": "Winner",
+          "description": "The calendar whose version is kept."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "no_target": {
+      "message": "Select a Calendar Sync entity as the target."
+    },
+    "not_a_pair_entity": {
+      "message": "{entity_id} is not an entity of a loaded Calendar Sync pair."
+    },
+    "bad_winner": {
+      "message": "Winner must be calendar1 or calendar2."
     }
   }
 }

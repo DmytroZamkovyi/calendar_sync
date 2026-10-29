@@ -1,0 +1,29 @@
+sync_now:
+  target:
+    entity:
+      integration: calendar_sync
+  fields:
+    confirm_deletions:
+      required: false
+      default: false
+      selector:
+        boolean:
+
+preview:
+  target:
+    entity:
+      integration: calendar_sync
+
+resolve_conflict:
+  target:
+    entity:
+      integration: calendar_sync
+  fields:
+    winner:
+      required: true
+      selector:
+        select:
+          options:
+            - calendar1
+            - calendar2
+          translation_key: winner
