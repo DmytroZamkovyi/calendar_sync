@@ -49,7 +49,7 @@ panels, cards or styles.
 ## Development
 
 ```
-python -m pytest
+python -m pytest -c tests/pytest.ini tests
 ```
 
 The core has no Home Assistant imports.

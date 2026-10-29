@@ -76,7 +76,7 @@ Home Assistant (`calendar.*`) з простими правилами для ко
 ## Розробка
 
 ```
-python -m pytest
+python -m pytest -c tests/pytest.ini tests
 ```
 
 Ядро не залежить від Home Assistant.
