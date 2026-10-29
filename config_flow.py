@@ -101,26 +101,22 @@ def _select(
         opts: Any = [SelectOptionDict(value=k, label=v) for k, v in options.items()]
     else:
         opts = options
-    return SelectSelector(
-        SelectSelectorConfig(
-            options=opts,
-            mode=mode,
-            multiple=multiple,
-            translation_key=key,
-        )
-    )
+    config: dict[str, Any] = {"options": opts, "mode": mode, "multiple": multiple}
+    if key:  # HA rejects translation_key=None
+        config["translation_key"] = key
+    return SelectSelector(SelectSelectorConfig(**config))
 
 
 def _number(minimum: float, maximum: float, unit: str | None = None) -> NumberSelector:
-    return NumberSelector(
-        NumberSelectorConfig(
-            min=minimum,
-            max=maximum,
-            step=1,
-            mode=NumberSelectorMode.BOX,
-            unit_of_measurement=unit,
-        )
-    )
+    config: dict[str, Any] = {
+        "min": minimum,
+        "max": maximum,
+        "step": 1,
+        "mode": NumberSelectorMode.BOX,
+    }
+    if unit:
+        config["unit_of_measurement"] = unit
+    return NumberSelector(NumberSelectorConfig(**config))
 
 
 class CalendarSyncConfigFlow(ConfigFlow, domain=DOMAIN):
