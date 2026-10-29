@@ -9,10 +9,10 @@ panels, cards or styles.
 [![Open your Home Assistant instance and open this repository in HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=DmytroZamkovyi&repository=calendar_sync&category=integration)
 [![Open your Home Assistant instance and start setting up this integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=calendar_sync)
 
-> **Status: work in progress.** The sync core and its tests are done
-> (`core/`). The Home Assistant integration layer
-> (config flow, entities, services) is not written yet, so the buttons above will
-> only work once it is released.
+> **Status: work in progress.** The sync core (`core/`) and the calendar entity
+> adapter (`adapter.py`, `ha_calendar.py`) are done and tested. The Home Assistant
+> integration layer (config flow, entities, services) is not written yet, so the
+> buttons above will only work once it is released.
 
 ## Installation (once released)
 

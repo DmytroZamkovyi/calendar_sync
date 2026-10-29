@@ -9,8 +9,8 @@ Home Assistant (`calendar.*`) з простими правилами для ко
 [![Відкрити цей репозиторій у HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=DmytroZamkovyi&repository=calendar_sync&category=integration)
 [![Додати цю інтеграцію в Home Assistant.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=calendar_sync)
 
-> **Статус: у розробці.** Ядро синхронізації й тести готові
-> (`core/`). Шар інтеграції з Home Assistant
+> **Статус: у розробці.** Ядро синхронізації (`core/`) і адаптер календарів Home Assistant
+> (`adapter.py`, `ha_calendar.py`) готові й протестовані. Шар інтеграції з Home Assistant
 > (налаштування, сутності, служби) ще не написаний, тому кнопки вище запрацюють лише
 > після релізу.
 
