@@ -20,6 +20,14 @@ CLOSED_REVERT = "revert"
 CLOSED_MODES = (CLOSED_IGNORE, CLOSED_REVERT)
 
 
+def _minute(value: Any) -> Any:
+    """Times are compared to the minute: calendar backends (Google) drop seconds and
+    fractions, so an exact comparison would never match what they store back."""
+    if isinstance(value, datetime):
+        return value.replace(second=0, microsecond=0)
+    return value
+
+
 @dataclass(frozen=True, slots=True)
 class EventFields:
     """The synchronised content of one event."""
@@ -36,7 +44,7 @@ class EventFields:
 
     def get(self, name: str) -> Any:
         if name == "when":
-            return (self.start, self.end)
+            return (_minute(self.start), _minute(self.end))
         return getattr(self, name)
 
     def replace(self, changes: dict[str, Any]) -> EventFields:

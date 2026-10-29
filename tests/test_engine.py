@@ -345,3 +345,18 @@ def test_two_way_replace_does_not_resurrect_old_event_from_stale_snapshot():
     assert len(c2.events) == 1
     r, _ = cycle(config, state, c1, c2)
     assert r.operations == []
+
+
+def test_adopts_when_backend_drops_seconds_and_fractions():
+    """Google stores times without seconds/fractions; the stored copy must still match."""
+    from datetime import datetime
+
+    config, c1, c2 = mirror_setup()
+    start = datetime(2026, 11, 2, 9, 0, 11, 129270, tzinfo=TZ)
+    c1.add(ev("A").replace({"when": (start, start + timedelta(minutes=15))}))
+    c2.add(ev("A").replace({"when": (start.replace(second=0, microsecond=0),
+                                     (start + timedelta(minutes=15)).replace(second=0, microsecond=0))}))
+    r, state = cycle(config, fresh(), c1, c2)
+    assert r.adopted == 1 and r.created == 0 and len(c2.events) == 1
+    r, _ = cycle(config, state, c1, c2)
+    assert r.operations == []
